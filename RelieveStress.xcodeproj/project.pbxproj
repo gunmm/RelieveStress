@@ -29,9 +29,22 @@
 		CD844A4B2F738DA600C60B0C /* RelieveStressUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RelieveStressUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		CD88FD232F78DE02006BFA96 /* Exceptions for "RelieveStress" folder in "RelieveStress" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = CD844A2A2F738DA400C60B0C /* RelieveStress */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		CD844A2D2F738DA400C60B0C /* RelieveStress */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				CD88FD232F78DE02006BFA96 /* Exceptions for "RelieveStress" folder in "RelieveStress" target */,
+			);
 			path = RelieveStress;
 			sourceTree = "<group>";
 		};
