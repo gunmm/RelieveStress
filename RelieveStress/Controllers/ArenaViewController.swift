@@ -267,6 +267,20 @@ class ArenaViewController: UIViewController, WeaponToolbarDelegate, TargetSetupD
         let overlay = DamageOverlayView(center: position, impactLevel: currentWeapon.impactLevel, currentLevel: session.currentLevel)
         targetContainerView.addSubview(overlay)
         
+        // Limit maximum visual cracks to prevent memory/performance issues
+        let maxCracks = 200
+        let activeCracks = targetContainerView.subviews.compactMap { $0 as? DamageOverlayView }.filter { $0.tag != 999 }
+        if activeCracks.count > maxCracks {
+            if let oldest = activeCracks.first {
+                oldest.tag = 999 // Mark as dying so it isn't targeted again
+                UIView.animate(withDuration: 0.5, animations: {
+                    oldest.alpha = 0
+                }) { _ in
+                    oldest.removeFromSuperview()
+                }
+            }
+        }
+        
         // 2. Score Bar Update
         let generator = UIImpactFeedbackGenerator(style: currentWeapon.impactLevel == .heavy ? .heavy : .light)
         generator.prepare()
@@ -457,7 +471,23 @@ class ArenaViewController: UIViewController, WeaponToolbarDelegate, TargetSetupD
             guard let self = self else { return }
             
             // Show Motivational Alert after it fully crushes
-            let cheerWords = ["你是最棒的！", "把所有的不开心都碾碎了！", "压力随风消散，你一定会成功！", "明天又是元气满满的一天！", "你非常耀眼，不要让烂人阻挡你的光芒！"]
+            let cheerWords = [
+                "允许自己偶尔崩溃，也允许自己被慢慢治愈。",
+                "把那些烂人烂事，统统隔绝在你的光芒之外。",
+                "你不需要总是那么坚强，累了就放下防备休息一下吧。",
+                "所有的坏情绪在这里终结，接下来全是好运气。",
+                "今天真的辛苦了，其实你做得比你想象的还要好。",
+                "生活难免充满泥沙，但你依然可以开出属于自己的花。",
+                "别让短暂的阴霾，遮挡了你身上原有的万丈光芒。",
+                "每一次畅快的发泄，都是为了腾出心里空间来装下新的快乐。",
+                "不必在意他人的眼光，你只需要好好爱护你自己。",
+                "遗憾和愤怒都被干脆地粉碎了，深呼吸，原谅这不完美的一天。",
+                "不管今天经历了什么，这浩瀚的宇宙依然深爱着你。",
+                "那些曾经拖累你的，终将让你变得更加强大且温柔。",
+                "慢慢来，谁不是翻山越岭，去与那个更好的自己相遇呢？",
+                "释放掉心底淤积的乌云，明天你的世界一定会拨云见日。",
+                "发泄完就翻篇吧，你值得这世间所有最纯粹的美好。"
+            ]
             let randomCheer = cheerWords.randomElement() ?? "你是最好的！"
             
             let energyPopup = EnergyPopupViewController()

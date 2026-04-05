@@ -149,7 +149,14 @@ class RecordCell: UITableViewCell {
     }
     
     func configure(with record: VentingRecord) {
-        targetLabel.text = "释放怒气值: \(record.totalVentingScore)"
+        let titleText = "释放怒气值: "
+        let valueText = "\(record.totalVentingScore)"
+        let attributedString = NSMutableAttributedString(string: titleText + valueText)
+        
+        let valueRange = NSRange(location: titleText.count, length: valueText.count)
+        attributedString.addAttribute(.foregroundColor, value: UIColor.systemRed, range: valueRange)
+        
+        targetLabel.attributedText = attributedString
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
