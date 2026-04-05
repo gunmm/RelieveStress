@@ -292,6 +292,7 @@
 				DEVELOPMENT_TEAM = Y2AMD36L7X;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RelieveStress/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "锤爆压力";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -325,6 +326,7 @@
 				DEVELOPMENT_TEAM = Y2AMD36L7X;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RelieveStress/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "锤爆压力";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
