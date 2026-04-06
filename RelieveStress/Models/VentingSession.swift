@@ -44,7 +44,7 @@ class VentingSession {
         let damage = weapon.damageValue
         // Bonus multiplier for higher levels!
         let levelMultiplier = Int(Double(currentLevel) * 1.5)
-        let totalDamage = damage * levelMultiplier
+        let totalDamage = damage
         
         accumulatedVentingValue += totalDamage
         return totalDamage
