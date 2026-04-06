@@ -28,6 +28,11 @@ class RecordManager {
         do {
             let encoded = try JSONEncoder().encode(existingRecords)
             UserDefaults.standard.set(encoded, forKey: defaultsKey)
+            
+            // Sync user data to CloudKit in the background
+            DispatchQueue.global(qos: .background).async {
+                CloudKitAnalyticsManager.shared.syncAnalytics()
+            }
         } catch {
             print("Failed to save record: \(error)")
         }
