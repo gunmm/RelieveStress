@@ -24,7 +24,7 @@ class LevelUpAlertViewController: UIViewController {
     
     private let titleLabel: UILabel = {
         let lbl = UILabel()
-        lbl.text = "突破怒气阈值！"
+        lbl.text = "痛快发泄了一波！"
         lbl.font = UIFont.systemFont(ofSize: 32, weight: .black)
         lbl.textColor = .white
         lbl.textAlignment = .center
@@ -55,7 +55,7 @@ class LevelUpAlertViewController: UIViewController {
     
     private let continueBtn: UIButton = {
         let btn = UIButton(type: .system)
-        btn.setTitle("继续发泄", for: .normal)
+        btn.setTitle("继续凌迟", for: .normal)
         btn.setTitleColor(.lightGray, for: .normal)
         btn.backgroundColor = .clear
         btn.layer.borderColor = UIColor.lightGray.cgColor
@@ -72,7 +72,24 @@ class LevelUpAlertViewController: UIViewController {
         view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         
         setupUI()
-        subtitleLabel.text = "你已累积 \(accumulatedValue) 怒气值\n达到阶段 \(sessionLevel)！"
+        
+        switch sessionLevel {
+        case 1:
+            titleLabel.text = "爽快发泄！"
+            subtitleLabel.text = "发泄对象已被你打得鼻青脸肿...\n现在可以直接让它彻底毁灭，\n或者把它留着继续“凌迟”！"
+        case 2:
+            titleLabel.text = "痛快发泄了一波！"
+            subtitleLabel.text = "发泄对象已毫无招架之力...\n现在可以直接让它彻底毁灭，\n或者把它留着继续“凌迟”！"
+        case 3:
+            titleLabel.text = "火力全开！"
+            subtitleLabel.text = "发泄对象已被折磨得奄奄一息...\n是时候让它彻底毁灭了，\n或者...你还不解气，想继续“凌迟”？"
+        case 4:
+            titleLabel.text = "狂暴连击！"
+            subtitleLabel.text = "发泄对象已经体无完肤、濒临崩溃...\n给它最后的致命一击，\n或者继续你无情的“凌迟”？"
+        default:
+            titleLabel.text = "极限毁灭！"
+            subtitleLabel.text = "发泄对象的精神与躯体即将崩坏...\n立刻将其灰飞烟灭，\n还是继续感受这残酷的“凌迟”？"
+        }
         
         // Appear animations setup
         containerView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
