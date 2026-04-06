@@ -5,9 +5,9 @@ class TipViewController: UIViewController {
 
     // MARK: - Product IDs
     private let productIDs: [String] = [
-        "com.syl.Decibel.small",
-        "com.syl.Decibel.medium",
-        "com.syl.Decibel.big"
+        "com.syl.RelieveStress.small",
+        "com.syl.RelieveStress.medium",
+        "com.syl.RelieveStress.big"
     ]
 
     private var products: [SKProduct] = []
