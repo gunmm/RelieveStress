@@ -268,7 +268,7 @@ class ArenaViewController: UIViewController, WeaponToolbarDelegate, TargetSetupD
         targetContainerView.addSubview(overlay)
         
         // Limit maximum visual cracks to prevent memory/performance issues
-        let maxCracks = 200
+        let maxCracks = 400
         let activeCracks = targetContainerView.subviews.compactMap { $0 as? DamageOverlayView }.filter { $0.tag != 999 }
         if activeCracks.count > maxCracks {
             if let oldest = activeCracks.first {

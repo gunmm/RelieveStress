@@ -81,7 +81,7 @@ class TargetSetupViewController: UIViewController, PHPickerViewControllerDelegat
     }()
     private let photoBtn: UIButton = {
         let btn = UIButton(type: .system)
-        btn.setTitle("从相册选择照片", for: .normal)
+        btn.setTitle("从相册选择发泄目标", for: .normal)
         btn.backgroundColor = .systemBlue
         btn.setTitleColor(.white, for: .normal)
         btn.layer.cornerRadius = 8
