@@ -358,17 +358,13 @@ class ArenaViewController: UIViewController, WeaponToolbarDelegate, TargetSetupD
     
     private func triggerFullScreenImpact(level: Int, isHeavy: Bool) {
         // Flash logic
-        if level > 1 || isHeavy {
-            let effectiveFlashLevel = min(level, 2)
-            flashView.alpha = 0.3 + CGFloat(effectiveFlashLevel) * 0.1
-            UIView.animate(withDuration: 0.2, animations: {
-                self.flashView.alpha = 0
-            })
-        }
+        flashView.alpha = isHeavy ? 0.4 : 0.2
+        UIView.animate(withDuration: 0.2, animations: {
+            self.flashView.alpha = 0
+        })
         
         // Screen Shake (Container + Main View)
-        let effectiveShakeLevel = min(level, 2)
-        let intensity: CGFloat = CGFloat(effectiveShakeLevel) * (isHeavy ? 10.0 : 5.0)
+        let intensity: CGFloat = isHeavy ? 10.0 : 5.0
         let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
         animation.timingFunction = CAMediaTimingFunction(name: .linear)
         animation.duration = 0.3
@@ -376,8 +372,8 @@ class ArenaViewController: UIViewController, WeaponToolbarDelegate, TargetSetupD
         
         targetContainerView.layer.add(animation, forKey: "shake")
         
-        if level > 2 {
-            // Intense whole screen shake
+        if isHeavy {
+            // Intense whole screen shake for heavy hits
             view.layer.add(animation, forKey: "globalShake")
         }
     }
